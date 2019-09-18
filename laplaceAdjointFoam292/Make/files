@@ -1,5 +1,5 @@
 
-laplaceAdjointFoam292.C
+laplaceAdjointFoam.C
 
 EXE = $(FOAM_USER_APPBIN)/laplaceAdjointFoam
 

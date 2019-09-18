@@ -1,4 +1,4 @@
 SOURCE = \
-laplaceAdjointFoam292.C \
+laplaceAdjointFoam.C \
 
 # sources

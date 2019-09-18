@@ -195,9 +195,33 @@ volScalarField uk
     ),
     u
 );
-
+volScalarField yk
+(
+    IOobject
+    (
+	"yk",
+	runTime.timeName(),
+	mesh,
+	IOobject::NO_READ,
+	IOobject::NO_WRITE
+    ),
+    y
+);
+volScalarField pk
+(
+    IOobject
+    (
+	"pk",
+	runTime.timeName(),
+	mesh,
+	IOobject::NO_READ,
+	IOobject::NO_WRITE
+    ),
+    p
+);
 
 wordList patchesToIntegrate(physicalProperties.lookup("boundaryPatchList"));
+
 volScalarField ud
 (
     IOobject
@@ -221,7 +245,52 @@ volScalarField uDiff
 	IOobject::NO_READ,
 	IOobject::AUTO_WRITE
     ),
+
+
     mag(u - ud)
 );
+
+volScalarField pd
+(
+    IOobject
+    (
+	"pd",
+	runTime.timeName(),
+	mesh,
+	IOobject::MUST_READ,
+	IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+
+volScalarField pDiff
+(
+    IOobject
+    (
+	"pDiff",
+	runTime.timeName(),
+	mesh,
+	IOobject::NO_READ,
+	IOobject::AUTO_WRITE
+    ),
+
+
+    mag(p - pd)
+);
+volScalarField yDiff
+(
+    IOobject
+    (
+	"yDiff",
+	runTime.timeName(),
+	mesh,
+	IOobject::NO_READ,
+	IOobject::AUTO_WRITE
+    ),
+
+
+    mag(y - yd)
+);
+
 
 
