@@ -66,6 +66,12 @@ int main(int argc, char *argv[])
         Jold = J;
 
         // Primal equation   fvm::Sp(1.0, y)=???
+//ans
+// fvm::Sp makes the source term implicit so it contributes to the diagonal. This can help in convergence when the source term is negative
+//on the rhs (sink term). If we use 1*y in place of Sp(1,y)it leaves source term  on the right hand side of the equations.
+
+
+
         solve(fvm::laplacian(k, y) -fvm::Sp(1.0, y) +  beta*u + f);
 
         // Adjoint equation fvm::Sp(1.0, p)+??
